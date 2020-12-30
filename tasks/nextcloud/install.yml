@@ -8,6 +8,14 @@
     group: "{{ nextcloud_http_group }}"
     mode: 0750
 
+- name: "Nextcloud configure: create /var/www/.ansible if missing"
+  file:
+    path: "/var/www/.ansible/tmp"
+    state: directory
+    owner: "{{ nextcloud_http_user }}"
+    group: "{{ nextcloud_http_group }}"
+    mode: 0750
+
 - name: "Nextcloud install: install via occ commandline"
   become: true
   become_user: "{{ nextcloud_http_user }}"
